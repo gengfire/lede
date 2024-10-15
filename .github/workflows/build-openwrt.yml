@@ -15,13 +15,13 @@ jobs:
     timeout-minutes: 300
 
     steps:
-    - name: executing remote ssh commands using password
-      uses: appleboy/ssh-action@v1.1.0
+    - name: Executing remote ssh commands using ssh key
+      uses: appleboy/ssh-action@v1.0.3
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
+        host: ${{ secrets.HOST_DNS_DEV }}
+        username: ${{ secrets.USERNAME_DEV }}
+        key: ${{ secrets.EC2_SSH_KEY_DEV }}
+        command_timeout: 20m
         script: whoami
     
     - name: SSH connection to Actions
