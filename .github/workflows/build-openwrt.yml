@@ -15,6 +15,9 @@ jobs:
     timeout-minutes: 600
 
     steps:
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
+    
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
       if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
